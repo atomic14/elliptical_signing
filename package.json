@@ -1,0 +1,11 @@
+{
+  "name": "elliptical_signing",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/atomic14/elliptical_signing",
+  "author": "chris.greening <chris@rocknpivot.com>",
+  "license": "MIT",
+  "dependencies": {
+    "elliptic": "^6.4.0"
+  }
+}
