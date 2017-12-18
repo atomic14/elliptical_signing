@@ -4,6 +4,9 @@
 
 const EC = require('elliptic').ec;
 const fs = require('fs');
+const KeyEncoder = require('key-encoder');
+
+const keyEncoder = new KeyEncoder('secp256k1');
 
 const ec = new EC('secp256k1');
 
@@ -21,3 +24,12 @@ console.log("\n\n");
 console.log("Wrote PrivateKey to private_key.hex");
 console.log(privateKey);
 console.log("\n\n");
+
+
+const pemPrivateKey = keyEncoder.encodePrivate(privateKey, 'raw', 'pem')
+const pemPublicKey = keyEncoder.encodePublic(publicKey, 'raw', 'pem')
+
+fs.writeFileSync('private_key.pem', pemPrivateKey);
+fs.writeFileSync('public_key.pem', pemPublicKey);
+
+console.log('Also wrote public and private keys to private_key.pem and public_key.pem');

@@ -58,4 +58,6 @@ typings/
 .env
 
 *.hex
+*.bin
+*.pem
 

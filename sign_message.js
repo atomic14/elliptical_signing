@@ -6,7 +6,7 @@ const EC = require('elliptic').ec;
 const ec = new EC('secp256k1');
 
 // sign a message with the private key
-const message = "This is a message from the emergency broadcasting system"
+const message = "This is a message from the emergency broadcasting system\n"
 
 // read the private key
 const privateKey = fs.readFileSync('private_key.hex').toString();

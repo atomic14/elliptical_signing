@@ -48,3 +48,24 @@ node verify_message.js
 
 This will read the `signature.hex` file and use the `public_key.hex` to check it against the real message and a fake message.
 
+# Testing with openssl
+
+```
+openssl dgst -sha256 -sign private_key.pem -out signature.hex -hex test.txt
+```
+
+Now run `node verify_message.js` - the good message should still verify as the signature is the same.
+
+Run `node sign_message.js` to generate a signature from node.
+
+Convert the hex signature to binary using:
+
+```
+xxd -r -p signature.hex > signature.bin
+```
+
+And verify the signature using:
+
+```
+openssl dgst -sha256 -verify public_key.pem -hex -signature signature.bin test.txt
+```

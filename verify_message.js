@@ -6,10 +6,14 @@ const EC = require('elliptic').ec;
 const ec = new EC('secp256k1');
 
 // What we think the message should be
-const trueMessage = "This is a message from the emergency broadcasting system"
+const trueMessage = "This is a message from the emergency broadcasting system\n"
 
 // read the signature making sure to convert from a buffer to a string
-const signature = fs.readFileSync('signature.hex').toString();
+let signature = fs.readFileSync('signature.hex').toString();
+
+if(signature.indexOf('= ') !== -1) {
+  signature = signature.split('= ')[1];
+}
 
 // read the public key
 const publicKey = fs.readFileSync('public_key.hex').toString();
